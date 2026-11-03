@@ -1,0 +1,33 @@
+{
+  "name": "dsh-beta-battle-mode",
+  "version": "0.1.0",
+  "description": "BETA battle mode for DeepSeek Harness — a commander-led agent cluster (commander, executors, reviewers) whose context is rebuilt from the project's work log instead of an expensive summarization call",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "agent-preset",
+    "multi-agent",
+    "context-compaction"
+  ],
+  "files": [
+    "cordis.patch.yml",
+    "lib/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "check": "node scripts/check-patch.mjs"
+  }
+}

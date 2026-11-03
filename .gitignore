@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Local workspace state (work logs, sessions, scratch output — never published)
+.local/
+archive/
+outputs/
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Python caches / virtualenvs (the compliance tooling is Python)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+venvs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment and local configuration
+.env
+*.env
+config.override.toml
+config.local.toml
+*.local.toml
+my_config*.toml
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# AI assistant scratch files
+CLAUDE.md
+AGENTS.md
+CLAUDE.zh-CN.md
