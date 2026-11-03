@@ -15,7 +15,7 @@
 BETA 换了个思路：**状态不放在对话里，放在项目的两个 Markdown 文件里**。
 
 ```
-.local/work_log_current.md    当前状态（宪法 §17.5 状态区）
+.local/work_log_current.md    当前状态（每次会话必读）
 .local/work_log_history.md    已归档的事件
 .local/work_log_digest.md     历史要点（压缩前自动生成）
 ```
@@ -114,7 +114,7 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 
 - **没有 plan 模式**（指挥官做决策不需要审批门）；
 - **没有 `ask_user_question` / 图表渲染**（刻意保持窄口径）；
-- 强依赖 `badge-constitution` skill（[公开仓库](https://github.com/godthrone/badge-development-constitution)），未安装时会降级为对话内约束；
+- **不依赖任何特定技能**：persona 自带一组最小工程原则（边界 / 防呆 / 退路 / 单一真相源 / 机密 / 简单优先）；如果你有自己的开发规范技能或 `CONTRIBUTING.md`，它会优先读并遵守；
 - 压缩质量取决于工作日志的质量 —— 日志写得烂，压缩后就烂。这是设计取舍，不是 bug。
 
 ## 版本
