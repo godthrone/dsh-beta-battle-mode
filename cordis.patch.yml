@@ -302,7 +302,7 @@
           # shipped driver already prevents by withholding a round while children run.
           # Do not re-add a second disarm/reservation layer here.
           - id: goal-round-reminder
-            name: ./lib/goal-round-reminder.js
+            name: dsh-beta-battle-mode/lib/goal-round-reminder.js
 
           - id: tool-goal
             name: '@deepseek-ai/dsh-tool-goal'
@@ -349,7 +349,7 @@
               # Prompt-only BADGE subclass of the shipped engine: trigger policy, retention,
               # the compaction transaction and checkpoint framing are all inherited.
               - id: compaction-basic
-                name: ./lib/compaction-badge.js
+                name: dsh-beta-battle-mode/lib/compaction-badge.js
                 config:
                   # 压缩不再发起任何模型请求：checkpoint 就是 `.local/work_log_current.md`
                   # 的全文（读文件）。到线后先注入「按项目级日志规范更新工作日志」，下一轮
