@@ -1,6 +1,6 @@
 # BETA 作战模式（dsh-beta-battle-mode）
 
-一个给 [DeepSeek Harness](https://github.com/deepseek-ai/dsh) 用的**多智能体预设**：一个指挥官统一调度，执行者负责端到端实现，审查者对照用户原始诉求做全局复核。
+一个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 用的**多智能体预设**：一个指挥官统一调度，执行者负责端到端实现，审查者对照用户原始诉求做全局复核。
 
 > **语言**：本项目面向中文社区，仅提供中文 README。
 
@@ -123,8 +123,8 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 
 | 我们的版本 | 含义 |
 |---|---|
-| 0.1.x | 参考实现，可能调整 checkpoint 结构 |
-| 0.2.x | 行为变更（例如压缩触发时机） |
+| 0.1.x | 首个公开版本 |
+| 0.2.x | 提示词改为「最小功能 + 最大秩序」，减法不再以"可逆任务"为前提 |
 
 ## License
 
