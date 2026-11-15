@@ -96,9 +96,10 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 
 | 文件 | 作用 |
 |---|---|
-| `cordis.patch.yml` | 预设定义：persona（208 行）+ 27 条插件声明（官方插件为主，2 条自研） |
+| `cordis.patch.yml` | 预设定义：persona + 30 条插件声明（官方插件为主，3 条自研） |
 | `lib/compaction-badge.js` | 压缩引擎：读工作日志当 checkpoint，零模型调用 |
 | `lib/goal-round-reminder.js` | goal 续轮时追加指挥官提醒 |
+| `lib/chairman-ledger.js` | 主席原文台账：每句用户原话落到 `.local/主席原文/`，附当时在问的问题指针；提供 `ledger_list` / `ledger_show` 两个工具 |
 
 压缩流程：
 
