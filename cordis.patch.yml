@@ -319,12 +319,12 @@
           # The goal service and the goal-round driver stay on the HOST plane: the
           # dsh-base bundle mounts them, and a preset row cannot disable or patch a host
           # row. BETA therefore keeps the shipped driver as the only driver and only
-          # appends its commander/BADGE reminder to that driver's round message through
+          # appends its commander reminder to that driver's round message through
           # `agent/pre-step`. A second driver must not be mounted here: it registers a
           # second reservation fence, the two instances reject each other's round, and
           # the goal ends up blocked with `prompt-rejected`.
           #
-          # `goal-round-reminder` only appends the commander/BADGE reminder to that
+          # `goal-round-reminder` only appends the commander reminder to that
           # driver's round message; it never disarms, blocks, or rejects a round.
           #
           # The old `goal-round-gate` is REMOVED (2026-11-01). It disarmed the goal
@@ -337,10 +337,10 @@
           - id: goal-round-reminder
             name: dsh-beta-battle-mode/lib/goal-round-reminder.js
 
-          # 主席原文台账：每句用户原话追加到 `.local/主席原文/utterances-<date>.jsonl`，
-          # 并附上当时在问的问题指针。指挥官决策前、审查者复核前都先查它。
-          - id: chairman-ledger
-            name: dsh-beta-battle-mode/lib/chairman-ledger.js
+          # 用户原话台账：每句用户输入追加到 `.local/ledger/utterances-<date>.jsonl`。
+          # 指挥官决策前、执行者改口径前、审查者复核前都先用 ledger_search 查它。
+          - id: user-ledger
+            name: dsh-beta-battle-mode/lib/user-ledger.js
 
           - id: tool-goal
             name: '@deepseek-ai/dsh-tool-goal'
@@ -384,10 +384,10 @@
               compaction: true
               toolResultPruner: true
             config:
-              # Prompt-only BADGE subclass of the shipped engine: trigger policy, retention,
+              # Prompt-only subclass of the shipped engine: trigger policy, retention,
               # the compaction transaction and checkpoint framing are all inherited.
               - id: compaction-basic
-                name: dsh-beta-battle-mode/lib/compaction-badge.js
+                name: dsh-beta-battle-mode/lib/compaction.js
                 config:
                   # 压缩不再发起任何模型请求：checkpoint 就是 `.local/work_log_current.md`
                   # 的全文（读文件）。到线后先注入「按项目级日志规范更新工作日志」，下一轮

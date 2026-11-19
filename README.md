@@ -61,7 +61,7 @@ dsh plugin --profile web add github:godthrone/dsh-beta-battle-mode
 - API 真不兼容 → 启动时报明确的错，而不是静默半残：
 
 ```
-badge compaction: 无法初始化：@deepseek-ai/dsh-compaction-basic 0.2.1-rc.2 缺少必需方法 compactNow；
+compaction: 无法初始化：@deepseek-ai/dsh-compaction-basic 0.2.1-rc.2 缺少必需方法 compactNow；
 当前宿主 @deepseek-ai/dsh 0.2.1-rc.2 与该 DSH 版本不兼容，请升级/降级插件。
 ```
 
@@ -97,9 +97,9 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 | 文件 | 作用 |
 |---|---|
 | `cordis.patch.yml` | 预设定义：persona + 30 条插件声明（官方插件为主，3 条自研） |
-| `lib/compaction-badge.js` | 压缩引擎：读工作日志当 checkpoint，零模型调用 |
+| `lib/compaction.js` | 压缩引擎：读工作日志当 checkpoint，零模型调用 |
 | `lib/goal-round-reminder.js` | goal 续轮时追加指挥官提醒 |
-| `lib/chairman-ledger.js` | 主席原文台账：每句用户原话落到 `.local/主席原文/`，附当时在问的问题指针；提供 `ledger_search`（一天台账 + 问题交给独立模型检索）/ `ledger_show`（按序号展开原文）两个工具 |
+| `lib/user-ledger.js` | 用户原话台账：每句用户输入落到 `.local/ledger/`；提供 `ledger_search`（一天台账 + 问题交给独立模型检索）/ `ledger_show`（按引用展开原文）两个工具 |
 
 压缩流程：
 
@@ -111,11 +111,11 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 
 全程不在轮次中间打断，也不会和下级通知抢时间。
 
-### 主席原文台账
+### 用户原话台账
 
 裁决丢失最常见的形式不是"忘了"，是**根本没有一条可检索的记录**：原话散在对话里，一压缩就没了。
 
-`chairman-ledger` 把每句用户原话落到项目的 `.local/主席原文/utterances-YYYY-MM-DD.jsonl`，并按天分文件：
+`user-ledger` 把每句用户输入落到项目的 `.local/ledger/utterances-YYYY-MM-DD.jsonl`，并按天分文件：
 
 ```json
 {"time":"2026-11-18T15:44:23+08:00","sid":"e7940079","id":"...","text":"原话"}
@@ -150,7 +150,7 @@ DSH 的层叠顺序是 **bundle 层 → 你的 profile patch 层**。直接改�
 |---|---|
 | 0.1.x | 首个公开版本 |
 | 0.2.x | 提示词改为「最小功能 + 最大秩序」，减法不再以"可逆任务"为前提 |
-| 0.3.x | 新增主席原文台账 + `ledger_search` / `ledger_show`；指挥官、执行者、审查者在决策/改代码/复核前都先查台账 |
+| 0.3.x | 新增用户原话台账 + `ledger_search` / `ledger_show`；指挥官、执行者、审查者在决策/改代码/复核前都先查台账 |
 
 ## License
 
