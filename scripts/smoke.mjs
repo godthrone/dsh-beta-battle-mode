@@ -113,6 +113,25 @@ console.log('user-ledger')
 // every preset row still points at a file that exists.
 import { spawnSync } from 'node:child_process'
 
+console.log('constitution §13.1 — no swallowed exceptions')
+{
+  const { readdirSync } = await import('node:fs')
+  const files = readdirSync('lib').filter((f) => f.endsWith('.js'))
+  for (const file of files) {
+    const source = readFileSync(join('lib', file), 'utf8')
+    // `catch {` binds nothing, so the failure cannot be named, logged or
+    // converted — a constitutional violation on its own.
+    const unbound = source.match(/catch\s*\{/g) ?? []
+    check(`${file}: every catch binds its error`, unbound.length === 0, `${unbound.length} bare catch`)
+
+    // A block holding only comments is the same silence with extra typing.
+    const empty = [...source.matchAll(/catch\s*\(([^)]*)\)\s*\{([\s\S]*?)\n\s*\}/g)].filter(
+      ([, , body]) => body.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '').trim() === ''
+    )
+    check(`${file}: no empty catch body`, empty.length === 0, `${empty.length} silent block(s)`)
+  }
+}
+
 console.log('plugins')
 {
   for (const file of ['lib/compaction.js', 'lib/goal-round-reminder.js', 'lib/user-ledger.js']) {
