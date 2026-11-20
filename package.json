@@ -1,6 +1,6 @@
 {
   "name": "dsh-beta-battle-mode",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "BETA battle mode for DeepSeek Harness — a commander-led agent cluster (commander, executors, reviewers) whose context is rebuilt from the project's work log instead of an expensive summarization call",
   "type": "module",
   "license": "MIT",
@@ -28,6 +28,7 @@
     }
   },
   "scripts": {
-    "check": "node scripts/check-patch.mjs"
+    "check": "node scripts/check-patch.mjs",
+    "test": "node scripts/smoke.mjs"
   }
 }
